@@ -1,5 +1,6 @@
 package Lecture4;
 
+import Driver.SimpleDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,16 +13,17 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
+import static Driver.SimpleDriver.getWebDriver;
+
 public class Lecture4_2 {
 
     WebDriver driver;
 
     @BeforeTest
     public void preconditions(){
-        driver = new ChromeDriver();
+        SimpleDriver simpleDriver = new SimpleDriver();
+        driver = getWebDriver();
         driver.get("https://www.sharelane.com/cgi-bin/register.py");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @BeforeMethod
@@ -80,3 +82,4 @@ public class Lecture4_2 {
         }
     }
 }
+
