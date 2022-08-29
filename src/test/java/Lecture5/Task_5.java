@@ -114,12 +114,7 @@ public class Task_5 {
 
     public void enter(String name, String value) {
         getWebDriver().findElement(By.name(name)).click();
-        getWebDriver().findElement(By.name(name)).sendKeys(Keys.BACK_SPACE);
-        getWebDriver().findElement(By.name(name)).sendKeys(Keys.BACK_SPACE);
-        getWebDriver().findElement(By.name(name)).sendKeys(Keys.BACK_SPACE);
-        getWebDriver().findElement(By.name(name)).sendKeys(Keys.BACK_SPACE);
-        getWebDriver().findElement(By.name(name)).sendKeys(Keys.BACK_SPACE);
-        getWebDriver().findElement(By.name(name)).sendKeys(Keys.BACK_SPACE);
+        getWebDriver().findElement(By.name(name)).sendKeys(Keys.LEFT_CONTROL+"a", Keys.BACK_SPACE);
         getWebDriver().findElement(By.name(name)).sendKeys(value);
     }
 
