@@ -17,6 +17,17 @@ import static Driver.SimpleDriver.getWebDriver;
 
 public class Task_5 {
 
+    /**
+     * Написать 3 теста по сценарию ниже с различными данными и вариантами.
+     *
+     * Открыть сайт https://masterskayapola.ru/kalkulyator/laminata.html
+     * Ввести параметры для расчета.
+     * Нажать на кнопку ‘Рассчитать’.
+     * Проверить полученные значения.
+     * Закрыть окно браузера.
+     */
+
+
     @BeforeTest
     public void preconditions() {
         SimpleDriver simpleDriver = new SimpleDriver();
@@ -123,7 +134,8 @@ public class Task_5 {
         select.selectByVisibleText(value);
     }
 
-    public void submit() {
+    public void submit()
+    {
         getWebDriver().findElement(By.cssSelector("[value='Рассчитать']")).click();
     }
 

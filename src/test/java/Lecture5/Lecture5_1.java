@@ -33,9 +33,10 @@ public class Lecture5_1 {
     @Test
     public void test1() {
         getWebDriver().findElement(By.name("q")).sendKeys("Привет мир", Keys.ENTER);
-        List<WebElement> results = getWebDriver().findElements(By.cssSelector("[lang='ru'] h3"));
+        List<WebElement> results = getWebDriver().findElements(By.xpath("//a//h3[@class='LC20lb MBeuO DKV0Md' and (contains(text(),'Привет мир') or contains(text(),'Привет, Мир'))]"));
         for (WebElement element : results) {
-            Assert.assertTrue(element.getText().contains("Мир"));
+           //Assert.assertTrue(element.getText().contains("Мир") || element.getText().contains("мир"));
+            System.out.println(element.getText());
         }
     }
 

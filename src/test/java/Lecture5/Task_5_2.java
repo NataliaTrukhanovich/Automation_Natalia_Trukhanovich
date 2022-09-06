@@ -6,9 +6,11 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,6 +23,7 @@ public class Task_5_2 {
     public void preconditions() {
         SimpleDriver simpleDriver = new SimpleDriver();
         getWebDriver().get("https://calc.by/building-calculators/laminate.html");
+        getWebDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @Test
@@ -33,12 +36,35 @@ public class Task_5_2 {
         getWebDriver().findElement(By.id("direction-laminate-id1")).click();
         submit();
         List<String> actualData = getActualResults();
-//        actualData.forEach(str -> {
-//            System.out.println(str);
-//        });
+        actualData.forEach(str -> {
+            System.out.println(str);
+        });
+        System.out.println();
         List<String> expectedData = Arrays.asList(
                 "Требуемое количество досок ламината: 53",
                 "Количество упаковок ламината: 7",
+                "Ниже представлена схема укладки ламината"
+        );
+        Assert.assertEquals(actualData, expectedData);
+    }
+
+    @Test
+    public void test2() {
+        enter("ln_room_id", "700");
+        enter("wd_room_id", "380");
+        enter("ln_lam_id", "1391");
+        enter("wd_lam_id", "203");
+        selectElement("со смещение на 1/3 длины");
+        getWebDriver().findElement(By.id("direction-laminate-id2")).click();
+        submit();
+        List<String> actualData = getActualResults();
+        actualData.forEach(str -> {
+            System.out.println(str);
+        });
+        System.out.println();
+        List<String> expectedData = Arrays.asList(
+                "Требуемое количество досок ламината: 111",
+                "Количество упаковок ламината: 14",
                 "Ниже представлена схема укладки ламината"
         );
         Assert.assertEquals(actualData, expectedData);
@@ -64,13 +90,15 @@ public class Task_5_2 {
         List<WebElement> result = getWebDriver().findElements(By.cssSelector("div.calc-result>div"));
 
         result.forEach(webElement -> {
-            System.out.println(webElement.getText());
-        });
-        result.forEach(webElement -> {
             actualResults.add(webElement.getText());
         });
 
 
         return actualResults;
+    }
+    @AfterTest
+    public void postconditions()
+    {
+        getWebDriver().close();
     }
 }
