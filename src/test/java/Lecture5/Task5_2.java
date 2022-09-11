@@ -17,7 +17,7 @@ import java.util.List;
 
 import static Driver.SimpleDriver.getWebDriver;
 
-public class Task_5_2 {
+public class Task5_2 {
 
     @BeforeTest
     public void preconditions() {

@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import static Driver.SimpleDriver.getWebDriver;
 import static org.openqa.selenium.support.locators.RelativeLocator.with;
 
-public class Task_6 {
+public class Task6 {
     @BeforeTest
     public void preconditions() {
         SimpleDriver simpleDriver = new SimpleDriver();
@@ -33,7 +33,7 @@ public class Task_6 {
         System.out.println("Product Name: " + getWebDriver().findElement(By.xpath("//div[text()='Sauce Labs Backpack']")).getText());
 
 
-        /**    Создать отдельный Java-класс Task_6 с тестом, сценарий:
+        /**   Создать отдельный Java-класс Task_6 с тестом, сценарий:
          a.	Залогиниться https://www.saucedemo.com/
          b.	Добавить товар в корзину
          c.	Перейти в корзину
@@ -46,26 +46,29 @@ public class Task_6 {
 
         //Цена первого продукта для Assert и наименование второго продукта для Assert
         String price = getElementProduct(productName1).findElement(By.className("inventory_item_price")).getText();
-        System.out.println("Price: " + price);
+        System.out.println("Price for Assert: " + price);
         String productName = getElementProduct(productName2).findElement(By.className("inventory_item_name")).getText();
         System.out.println("Name of the Product for Assert: " + productName);
 
-        //СЛЕДУЮЩАЯ СТРОКА ВОЗВРАЩАЕТ НЕВЕРНУЮ ЦЕНУ. ПРИХОДИТ ЦЕНА ПЕРВОГО ПРОДУКТА НА СТРАНИЦЕ,ХОТЯ ЕСЛИ ВВЕСТИ ЭТО В КОНСОЛИ РАЗРАБОТЧИКА,
-        //ТО ПОДСВЕЧИВАЕТСЯ ПРАВИЛЬНЫЙ ТЕГ
-        System.out.println(getElementProduct(productName1).findElement(By.xpath("//div[@class='inventory_item_price']")).getText());
+        //xpath по атрибуту
+        System.out.println(getElementProduct(productName1).findElement(By.xpath(".//div[@class='inventory_item_price']")).getText());
 
+        //Кладем в корзину товары с именами productName1 и productName2
         getElementProduct(productName1).findElement(By.tagName("button")).click();
         getElementProduct(productName2).findElement(By.tagName("button")).click();
+        //Кладем в корзину товар, следующий за productName2 (ancestor + following-sibling)
+        getWebDriver().findElement(By.xpath("//div[@class='inventory_item_name' and text()='" + productName2 + "']/ancestor::div[@class='inventory_item']/following-sibling::div//button")).click();
 
         //xpath по частичному совпадению атрибута
         System.out.print("Кол-во продуктов в корзине: ");
         System.out.println(getWebDriver().findElement(By.xpath("//span[contains(@class,'cart_badge')]")).getText());
 
-        //НЕ РАБОТАЕТ. ПОЧЕМУ?
-        //   System.out.println(getWebDriver().findElement(By.xpath("//div[@class='header_secondary_container']/following-sibling::span[@class='title']")).getText());
+        //xpath с preceding-sibling (получаем название с верхней панели - PRODUCTS)
+        System.out.println(getWebDriver().findElement(By.xpath("//div[@class='peek']/preceding-sibling::span[@class='title']")).getText());
 
         //Shopping Cart click
         getWebDriver().findElement(By.xpath("//a[@class='shopping_cart_link']")).click();
+
 
         //Cart Page
         String cartPrice = getElementCartItem(productName1).findElement(By.className("inventory_item_price")).getText();
@@ -77,8 +80,37 @@ public class Task_6 {
         Assert.assertEquals(price, cartPrice);
         Assert.assertEquals(productName, cartItemName);
 
-        //below
-        getWebDriver().findElement(with(By.tagName("button")).below(By.className("cart_desc_label"))).click();
+        //below (удаляем первый эл-т из корзины ч-з кнопку REMOVE)
+        getWebDriver().findElement(with(By.xpath("//div[@class='cart_item']//button")).below(By.className("cart_desc_label"))).click();
+
+        //Нажимаем на название товара Sauce Labs Onesie и переходим на его страницу (parent)
+        getWebDriver().findElement(By.xpath("//div[@class='inventory_item_name' and text()='Sauce Labs Onesie']/parent::a")).click();
+
+        //CSS Selectors
+
+        //Страница с описанием товара (проверяем правильность описания и цену)
+        // css по .class.class;  .class .class;  tagname; tagname.class
+        String actualDescription;
+        String expectedDescription = "Rib snap infant onesie for the junior automation engineer in development. Reinforced 3-snap bottom closure, two-needle hemmed sleeved and bottom won't unravel.";
+        actualDescription = getWebDriver().findElement(By.cssSelector(".inventory_details_desc_container .inventory_details_desc.large_size")).getText();
+        Assert.assertEquals(actualDescription, expectedDescription);
+
+        String actualItemPrice = getWebDriver().findElement(By.cssSelector("div.inventory_details_price")).getText();
+        String expectedItemPrice = "$7.99";
+        Assert.assertEquals(actualItemPrice, expectedItemPrice);
+
+        //Remove Item from Shopping Cart (css по #id)
+        getWebDriver().findElement(By.cssSelector("#remove-sauce-labs-onesie")).click();
+
+        //Кол-во товаров в корзине ([attribute=value]   [attribute^=value]   [attribute$=value]   [attribute*=value])
+        System.out.println("Кол-во продуктов в корзине: " + getWebDriver().findElement(By.cssSelector("span[class='shopping_cart_badge']")).getText());
+        System.out.println("Кол-во продуктов в корзине: " + getWebDriver().findElement(By.cssSelector("span[class^='shopping_cart']")).getText());
+        System.out.println("Кол-во продуктов в корзине: " + getWebDriver().findElement(By.cssSelector("span[class$=badge]")).getText());
+        System.out.println("Кол-во продуктов в корзине: " + getWebDriver().findElement(By.cssSelector("span[class*='_cart_']")).getText());
+
+        //Вернулись к странице с товарами
+        getWebDriver().findElement(By.cssSelector(".header_container.inventory_details .header_secondary_container button")).click();
+
 
     }
 

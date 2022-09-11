@@ -15,7 +15,7 @@ import java.util.List;
 
 import static Driver.SimpleDriver.getWebDriver;
 
-public class Task_5 {
+public class Task5 {
 
     /**
      * Написать 3 теста по сценарию ниже с различными данными и вариантами.
