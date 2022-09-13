@@ -15,30 +15,32 @@ public class SimpleDriver {
         if (webDriver == null) {
             WebDriverManager.chromedriver().setup();
             webDriver = new ChromeDriver(getChromeOptions());
-
-            //Ещё возможные варианты создания драйвера
-            //WebDriverManager.getInstance(DriverManagerType.CHROME).setup();
-            //WebDriverManager.getInstance("chrome").setup();
-
-            //Если мы не используем WebDriverManager, то тогда вызываем метод setWebDriver.
-            //При использовании WebDriverManager метод setWebDriver не нужен, мы всё делаем в блоке инициализации
-            //setWebDriver();
+            /* Ожидание, указывающее на то какое максимальное количество времени Selenium будет
+            дожидаться появления элемента. По сути срабатывает каждый раз при вызове
+            функции driver.findElement(). */
+            webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+            //Ожидание выполнения java скрипта
+            webDriver.manage().timeouts().scriptTimeout(Duration.ofSeconds(20));
+            //Ожидание прогрузки страницы
+            webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
         }
     }
 
-    public static WebDriver getWebDriver(){
+    public static WebDriver getWebDriver() {
+
         return webDriver;
     }
 
-    private static void setWebDriver() {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
-        webDriver = new ChromeDriver(getChromeOptions());
-        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+    public static void closeWebDriver() {
+        webDriver.close();
+        webDriver.quit();
+        webDriver = null;
     }
 
-    private static ChromeOptions getChromeOptions(){
+    private static ChromeOptions getChromeOptions() {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("start-maximized");
         return chromeOptions;
     }
+
 }
