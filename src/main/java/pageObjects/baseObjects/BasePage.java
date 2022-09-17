@@ -1,12 +1,13 @@
 package pageObjects.baseObjects;
 
 import Driver.SimpleDriver;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import javax.swing.*;
 import java.time.Duration;
 
 import static Driver.SimpleDriver.getWebDriver;
@@ -15,13 +16,23 @@ public abstract class BasePage {
 
     protected WebDriver driver;
     protected WebDriverWait wait;
+    protected Actions actions;
 
     protected BasePage() {
         driver = getWebDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        actions = new Actions(driver);
     }
-
+    protected FluentWait<WebDriver> fluentWait(long timeout, long pollingEvery) {
+        return new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(timeout))
+                .pollingEvery(Duration.ofSeconds(pollingEvery))
+                .ignoring(NoSuchElementException.class)
+                .ignoring(StaleElementReferenceException.class);
+    }
     public void enter(By locator, String enterData) {
+        System.out.println("Enter text by: "+locator);
+        driver.findElement(locator).clear();
         driver.findElement(locator).sendKeys(enterData);
     }
 
