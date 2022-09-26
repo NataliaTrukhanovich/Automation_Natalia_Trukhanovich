@@ -9,31 +9,31 @@ import java.time.Duration;
 
 public class SimpleDriver {
 
-    private static WebDriver webDriver;
+    private static ThreadLocal<WebDriver> webDriver = new ThreadLocal<>();
 
     {
-        if (webDriver == null) {
+        if (webDriver.get() == null) {
             WebDriverManager.chromedriver().setup();
-            webDriver = new ChromeDriver(getChromeOptions());
+            webDriver.set(new ChromeDriver(getChromeOptions()));
             /* Ожидание, указывающее на то какое максимальное количество времени Selenium будет
             дожидаться появления элемента. По сути срабатывает каждый раз при вызове
             функции driver.findElement(). */
-            webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+            webDriver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
             //Ожидание выполнения java скрипта
-            webDriver.manage().timeouts().scriptTimeout(Duration.ofSeconds(10));
+            webDriver.get().manage().timeouts().scriptTimeout(Duration.ofSeconds(10));
             //Ожидание прогрузки страницы
-            webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
+            webDriver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
         }
     }
 
     public static WebDriver getWebDriver() {
 
-        return webDriver;
+        return webDriver.get();
     }
 
     public static void closeWebDriver() {
-        webDriver.close();
-        webDriver.quit();
+        webDriver.get().close();
+        webDriver.get().quit();
         webDriver = null;
     }
 

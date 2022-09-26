@@ -16,6 +16,10 @@ public class LoginPage extends BasePage {
         driver.get("https://www.saucedemo.com/");
         return this;
     }
+    public LoginPage openTestPage(String url){
+        driver.get(url);
+        return this;
+    }
 
     public LoginPage setUsername(String username) {
         enter(this.USERNAME, username);
@@ -39,6 +43,10 @@ public class LoginPage extends BasePage {
 
     public void verifyErrorMessage() {
         Assert.assertEquals(getText(ERROR_MESSAGE), "Epic sadface: Sorry, this user has been locked out.");
+    }
+
+    public void verifyErrorMessageExist(){
+       driver.findElement(ERROR_MESSAGE).isDisplayed();
     }
 
     public LoginPage verifyThatLoginPageIsClosed() {
