@@ -20,7 +20,7 @@ public class SimpleDriver {
             функции driver.findElement(). */
             webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
             //Ожидание выполнения java скрипта
-            webDriver.manage().timeouts().scriptTimeout(Duration.ofSeconds(20));
+            webDriver.manage().timeouts().scriptTimeout(Duration.ofSeconds(10));
             //Ожидание прогрузки страницы
             webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
         }
