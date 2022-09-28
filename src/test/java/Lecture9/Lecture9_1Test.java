@@ -2,41 +2,26 @@ package Lecture9;
 
 import org.testng.annotations.*;
 import pageObjects.baseObjects.BaseTest;
-import pageObjects.saucedemo.LoginPage;
 
 public class Lecture9_1Test extends BaseTest {
 
-    @BeforeTest(groups = "test9")
-    public void beforeTest() {
-        System.out.println("Hello i am @BeforeTest");
-    }
+    @BeforeTest(groups = "test91")
+    public void beforeTest() {System.out.println("Hello i am @BeforeTest");}
 
-    @BeforeMethod(groups = "test9")
-    public void beforeMethod() {
-        System.out.println("Hello i am @BeforeMethod");
-    }
+    @BeforeMethod(groups = "test91")
+    public void beforeMethod() {System.out.println("Hello i am @BeforeMethod");}
 
     @BeforeClass(groups = "test9")
-    public void beforeClass() {
-
-        System.out.println("Hello i am @BeforeClass");
-    }
+    public void beforeClass() {System.out.println("Hello i am @BeforeClass");}
 
     @BeforeSuite(groups = "test9")
-    public void beforeSuite() {
-        System.out.println("Hello i am @BeforeSuite");
-    }
+    public void beforeSuite() {System.out.println("Hello i am @BeforeSuite");}
 
     @BeforeGroups(groups = "test9")
-
-    public void beforeGroups() {System.out.println("Hello i am @BeforeGroups");
-    }
+    public void beforeGroups() {System.out.println("Hello i am @BeforeGroups");}
 
     @Test(groups = "test9")
-    public void test1() {
-        LoginPage loginPage = new LoginPage();
-        System.out.println("Hello i am @Test 1");
-    }
+    public void test1() {System.out.println("Hello i am @Test 1");}
 
     @Test(groups = "test9new")
     public void test2() {
@@ -58,7 +43,7 @@ public class Lecture9_1Test extends BaseTest {
         System.out.println("Hello i am @AfterGroups");
     }
 
-    @AfterMethod(groups = "test9")
+    @AfterMethod
     public void afterMethod() {
         System.out.println("Hello i am @AfterMethod");
     }

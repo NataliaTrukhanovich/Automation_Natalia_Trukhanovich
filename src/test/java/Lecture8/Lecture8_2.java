@@ -6,8 +6,6 @@ import org.testng.annotations.Test;
 import pageObjects.baseObjects.BaseTest;
 import pageObjects.herokuapp.*;
 
-import java.io.File;
-
 import static pageObjects.herokuapp.NavigationItems.*;
 
 public class Lecture8_2 extends BaseTest {
@@ -17,33 +15,32 @@ public class Lecture8_2 extends BaseTest {
                 .open();
     }
 
-    @Test(enabled = false)
+    @Test
     public void dynamicLoading_Test() {
         new NavigationPage()
                 .navigateTo(DYNAMIC_LOADING);
 
-        String result = new DynamicLoadingPage()
+        new DynamicLoadingPage()
                 .clickOnExample("Example 1")
                 .clickStart()
                 .pageIsLoaded();
-        System.out.println(result);
     }
 
-    @Test(enabled = false)
+    @Test
     public void scrollPage_Test() {
         new NavigationPage()
                 .navigateTo(INFINITE_SCROLL);
         new InfiniteScrollPage().infiniteScroll(10);
     }
 
-    @Test(enabled = false)
+    @Test
     public void contextMenu_Test() {
         new NavigationPage()
                 .navigateTo(CONTEXT_MENU);
         new ContextMenuPage().clickContext().verifyAlert("You selected a context menu");
     }
 
-    @Test(enabled = false)
+    @Test
     public void FrameTest() {
         new NavigationPage()
                 .navigateTo(FRAMES);
@@ -72,14 +69,21 @@ public class Lecture8_2 extends BaseTest {
     }
 
     @Test
-    public void FileUploadTest(){
+    public void FileUploadTest() {
         new NavigationPage()
                 .navigateTo(FILE_UPLOAD);
         new FileUploadPage()
                 .setFile()
                 .clickUploadBtn()
                 .verifyFileNames();
-                //     .checkDownloadedFile(); //этот метод не работает. Он относится к последнему заданию (с зорачкай)
+    }
 
+    @Test
+    public void FileDownloadTest() {
+        new NavigationPage()
+                .navigateTo(FILE_DOWNLOAD);
+        new FileDownloadPage()
+                .clickFileLinkForDownloading("some-file.txt")
+                .checkDownloadedFile("some-file.txt");
     }
 }

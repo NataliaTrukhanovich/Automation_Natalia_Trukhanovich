@@ -53,4 +53,7 @@ public class LoginPage extends BasePage {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(LOGINBTN));
         return this;
     }
+    public void authorization(){
+        openTestPage("https://www.saucedemo.com/").setUsername("standard_user").setPassword("secret_sauce").clickLoginBtn();
+    }
 }

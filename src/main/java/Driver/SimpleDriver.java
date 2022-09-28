@@ -18,11 +18,11 @@ public class SimpleDriver {
             /* Ожидание, указывающее на то какое максимальное количество времени Selenium будет
             дожидаться появления элемента. По сути срабатывает каждый раз при вызове
             функции driver.findElement(). */
-            webDriver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+            webDriver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
             //Ожидание выполнения java скрипта
             webDriver.get().manage().timeouts().scriptTimeout(Duration.ofSeconds(10));
             //Ожидание прогрузки страницы
-            webDriver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
+            webDriver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
         }
     }
 
