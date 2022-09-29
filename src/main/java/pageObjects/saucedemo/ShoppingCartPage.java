@@ -29,7 +29,8 @@ public class ShoppingCartPage extends BasePage {
     private WebElement getElementCartItemName(String productName) {
         return getElementCartItem(productName).findElement(By.className("inventory_item_name"));
     }
-    private WebElement getRemoveBtn(String productName){
+
+    private WebElement getRemoveBtn(String productName) {
         return getElementCartItem(productName).findElement(By.tagName("button"));
     }
 
@@ -52,13 +53,19 @@ public class ShoppingCartPage extends BasePage {
         return getElementCartItemName(productName).getText();
     }
 
-    public void clickRemoveProduct(String productName){
+    public void clickRemoveProduct(String productName) {
         clickBtn(getRemoveBtn(productName));
     }
+
+    public void clickRemoveAnyProduct(){
+        clickBtn(By.xpath("//div[@class='cart_item']//button"));
+    }
+
     public void clickOneProductPage(String productName) {
         clickBtn(getElementCartItemName(productName));
     }
-    public void clickCheckoutBtn(){
+
+    public void clickCheckoutBtn() {
         clickBtn(driver.findElement(By.xpath("//*[contains(@class,'checkout_button')]")));
     }
 

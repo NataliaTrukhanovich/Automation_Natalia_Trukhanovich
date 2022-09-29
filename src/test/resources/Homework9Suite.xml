@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Homework9" thread-count="1" parallel="tests">
+
+    <test name="Lecture9HomeworkLoginTest">
+        <classes>
+            <class name="Lecture9.Homework9.Hw9LoginTest">
+                <parameter name="url" value="https://www.saucedemo.com/"></parameter>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Lecture9HomeworkWithDataProvider">
+        <classes>
+            <class name="Lecture9.Homework9.Hw9ShoppingCartTestWithDataProvider">
+                <parameter name="url" value="https://www.saucedemo.com/"></parameter>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Lecture9HomeworkWithInvocationCount">
+        <classes>
+            <class name="Lecture9.Homework9.Hw9ShoppingCartWithInvocationCount">
+                <parameter name="url" value="https://www.saucedemo.com/"></parameter>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Lecture9HomeworkRemoveThroughProductPage">
+        <classes>
+            <class name="Lecture9.Homework9.Hw9RemoveThroughProductPage">
+            </class>
+        </classes>
+    </test>
+</suite>

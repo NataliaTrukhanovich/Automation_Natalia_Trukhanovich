@@ -20,7 +20,7 @@ public abstract class BasePage {
 
     protected BasePage() {
         driver = getWebDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         actions = new Actions(driver);
     }
     protected FluentWait<WebDriver> fluentWait(long timeout, long pollingEvery) {

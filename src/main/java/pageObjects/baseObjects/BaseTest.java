@@ -8,14 +8,14 @@ import static Driver.SimpleDriver.closeWebDriver;
 
 public abstract class BaseTest {
 
-    @BeforeTest
-    public void preconditions() {
+    @BeforeTest()
+    public void setUpDriver() {
         System.out.println("Starting new web driver!");
         new SimpleDriver();
     }
 
-    @AfterTest
-    public void postconditions(){
+    @AfterTest(groups = {"Test1","Test2", "Test3"})
+    public void stopDriver(){
         System.out.println("Closing web driver!");
        // closeWebDriver();
     }
