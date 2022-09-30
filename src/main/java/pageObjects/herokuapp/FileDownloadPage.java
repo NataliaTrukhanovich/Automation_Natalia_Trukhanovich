@@ -16,6 +16,7 @@ public class FileDownloadPage extends BasePage {
 
     public void checkDownloadedFile(String fileName) {
         File folder = new File(System.getProperty("user.home") + "\\Downloads\\");
+        System.out.println(folder);
         File[] listOfFiles = folder.listFiles();
         boolean status = false;
 

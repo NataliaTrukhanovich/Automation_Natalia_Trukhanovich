@@ -15,7 +15,7 @@ public class Lecture8_2 extends BaseTest {
                 .open();
     }
 
-    @Test
+    @Test(enabled = false)
     public void dynamicLoading_Test() {
         new NavigationPage()
                 .navigateTo(DYNAMIC_LOADING);
@@ -26,21 +26,21 @@ public class Lecture8_2 extends BaseTest {
                 .pageIsLoaded();
     }
 
-    @Test
+    @Test(enabled = false)
     public void scrollPage_Test() {
         new NavigationPage()
                 .navigateTo(INFINITE_SCROLL);
         new InfiniteScrollPage().infiniteScroll(10);
     }
 
-    @Test
+    @Test(enabled = false)
     public void contextMenu_Test() {
         new NavigationPage()
                 .navigateTo(CONTEXT_MENU);
         new ContextMenuPage().clickContext().verifyAlert("You selected a context menu");
     }
 
-    @Test
+    @Test(enabled = false)
     public void FrameTest() {
         new NavigationPage()
                 .navigateTo(FRAMES);
@@ -52,7 +52,7 @@ public class Lecture8_2 extends BaseTest {
                 .clickBoldTxt();
     }
 
-    @Test
+    @Test(enabled = false)
     public void dynamicControlsTest() {
         new NavigationPage()
                 .navigateTo(DYNAMIC_CONTROLS);
@@ -68,7 +68,7 @@ public class Lecture8_2 extends BaseTest {
                 .isEnableInput();
     }
 
-    @Test
+    @Test(enabled = false)
     public void FileUploadTest() {
         new NavigationPage()
                 .navigateTo(FILE_UPLOAD);

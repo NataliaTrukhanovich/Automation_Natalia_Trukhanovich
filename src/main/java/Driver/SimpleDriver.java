@@ -34,7 +34,7 @@ public class SimpleDriver {
     public static void closeWebDriver() {
         webDriver.get().close();
         webDriver.get().quit();
-        webDriver = null;
+        webDriver.remove();
     }
 
     private static ChromeOptions getChromeOptions() {
