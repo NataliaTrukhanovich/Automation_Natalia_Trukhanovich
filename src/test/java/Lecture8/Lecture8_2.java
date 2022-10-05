@@ -68,7 +68,7 @@ public class Lecture8_2 extends BaseTest {
                 .isEnableInput();
     }
 
-    @Test(enabled = false)
+    @Test
     public void FileUploadTest() {
         new NavigationPage()
                 .navigateTo(FILE_UPLOAD);
