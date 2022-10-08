@@ -8,7 +8,7 @@ import pageObjects.baseObjects.BasePage;
 public class FileUploadPage extends BasePage {
     private By chooseAFileBtn = By.id("file-upload");
     private By uploadBtn = By.id("file-submit");
-    private String pathToFile = System.getProperty("user.home") + "\\Downloads\\Many Happies.jpg";
+    private String pathToFile = System.getProperty("user.dir") + "\\files\\Many Happies.jpg";
     private By nameOfUploadedFileOnPage = By.id("uploaded-files");
 
     private WebElement getChooseAFileBtn() {

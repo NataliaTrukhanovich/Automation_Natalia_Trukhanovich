@@ -7,7 +7,8 @@ public enum NavigationItems {
     FRAMES("Frames"),
     DYNAMIC_CONTROLS("Dynamic Controls"),
     FILE_UPLOAD("File Upload"),
-    FILE_DOWNLOAD("File Download");
+    FILE_DOWNLOAD("File Download"),
+    SORTABLE_DATA_TABLES("Sortable Data Tables");
     private String item;
 
     NavigationItems(String item) {

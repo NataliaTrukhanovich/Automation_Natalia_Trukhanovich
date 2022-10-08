@@ -22,7 +22,7 @@ public class SimpleDriver {
             //Ожидание выполнения java скрипта
             webDriver.get().manage().timeouts().scriptTimeout(Duration.ofSeconds(10));
             //Ожидание прогрузки страницы
-            webDriver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
+            webDriver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
         }
     }
 
