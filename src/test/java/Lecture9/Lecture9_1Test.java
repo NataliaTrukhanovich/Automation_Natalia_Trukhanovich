@@ -1,5 +1,6 @@
 package Lecture9;
 
+import org.testng.Reporter;
 import org.testng.annotations.*;
 import pageObjects.baseObjects.BaseTest;
 
@@ -21,7 +22,9 @@ public class Lecture9_1Test extends BaseTest {
     public void beforeGroups() {System.out.println("Hello i am @BeforeGroups");}
 
     @Test(groups = "test9")
-    public void test1() {System.out.println("Hello i am @Test 1");}
+    public void test1() {
+        Reporter.log("Hello i'm Test1");
+        System.out.println("Hello i am @Test 1");}
 
     @Test(groups = "test9new")
     public void test2() {

@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Lecture8" thread-count="2" parallel="tests">
 
-    <test enabled="false" name="Lecture8 All Tests set 1">
+    <test name="Lecture8 All Tests set 1">
         <classes>
             <class name="Lecture8.Lecture8_1"></class>
         </classes>

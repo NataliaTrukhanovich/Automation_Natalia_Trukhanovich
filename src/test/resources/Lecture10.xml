@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Lecture10" thread-count="2" parallel="tests">
+    <test name="Lecture10">
+        <classes>
+            <class name="Lecture10.SortableDataTablesTest"></class>
+        </classes>
+    </test>
+</suite>

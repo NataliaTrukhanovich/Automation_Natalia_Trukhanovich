@@ -1,13 +1,11 @@
 package pageObjects.baseObjects;
 
-import Driver.SimpleDriver;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-import javax.swing.*;
 import java.time.Duration;
 
 import static Driver.SimpleDriver.getWebDriver;
