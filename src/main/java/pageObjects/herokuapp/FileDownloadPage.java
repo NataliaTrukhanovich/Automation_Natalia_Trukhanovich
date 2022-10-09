@@ -16,10 +16,11 @@ public class FileDownloadPage extends BasePage {
 
     public void checkDownloadedFile(String fileName) {
         File folder = new File(System.getProperty("user.home") + "\\Downloads\\");
-        File[] listOfFiles = folder.listFiles();
+        System.out.println(folder);
         boolean status = false;
 
         for (int counter = 0; counter <= 60; counter++) {
+            File[] listOfFiles = folder.listFiles();
             if (Arrays.stream(listOfFiles)
                     .filter(data -> data.getAbsoluteFile().getName().equals(fileName)).count() != 0) {
                 status = true;
