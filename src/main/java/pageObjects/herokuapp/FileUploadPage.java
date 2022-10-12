@@ -30,7 +30,7 @@ public class FileUploadPage extends BasePage {
     }
 
     public FileUploadPage clickUploadBtn() {
-        clickBtn(getUploadButton());
+        click(getUploadButton());
         return this;
     }
 

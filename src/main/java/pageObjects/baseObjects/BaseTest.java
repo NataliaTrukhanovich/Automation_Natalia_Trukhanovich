@@ -30,7 +30,7 @@ public abstract class BaseTest {
         return instance;
     }
 
-    @AfterTest(groups = {"Test1","Test2", "Test3"})
+    @AfterTest()
     public void stopDriver(){
         System.out.println("Closing web driver!");
         closeWebDriver();

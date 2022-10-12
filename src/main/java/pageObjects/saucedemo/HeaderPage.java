@@ -1,7 +1,6 @@
 package pageObjects.saucedemo;
 
 import org.openqa.selenium.By;
-import org.testng.Assert;
 import pageObjects.baseObjects.BasePage;
 
 public class HeaderPage extends BasePage {
@@ -11,12 +10,13 @@ public class HeaderPage extends BasePage {
     By quantityProducts = By.xpath("//a[@class='shopping_cart_link']//span");
 
     public HeaderPage clickShoppingCartLink() {
-        clickBtn(basketBtn);
+        click(basketBtn);
         return this;
     }
 
-    public void clickNavigationBtn() {
-        clickBtn(navigationBtn);
+    public HeaderPage clickNavigationBtn() {
+        click(navigationBtn);
+        return this;
     }
 
     public String quantityOfProducts() {

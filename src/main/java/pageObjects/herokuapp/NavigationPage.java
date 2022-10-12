@@ -10,11 +10,11 @@ public class NavigationPage extends BasePage {
     }
 
     public NavigationPage open() {
-        driver.get("http://the-internet.herokuapp.com/");
+        load("http://the-internet.herokuapp.com/");
         return this;
     }
 
     public void navigateTo(NavigationItems navigationItems) {
-        clickBtn(getByLink(navigationItems.getItem()));
+        click(getByLink(navigationItems.getItem()));
     }
 }

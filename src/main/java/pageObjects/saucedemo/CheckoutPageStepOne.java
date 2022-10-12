@@ -32,10 +32,10 @@ private By title = By.xpath("//span[@class='title']");
 
     public void clickCancelBtn(){
 
-        clickBtn(getCancelBtn());
+        click(getCancelBtn());
     }
     public CheckoutPageStepOne clickContinueBtn(){
-        clickBtn(getContinueBtn());
+        click(getContinueBtn());
         return this;
     }
     public CheckoutPageStepOne verifyCheckoutPageStepOne(){

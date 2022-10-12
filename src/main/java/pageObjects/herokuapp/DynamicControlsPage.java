@@ -30,12 +30,12 @@ public class DynamicControlsPage extends BasePage {
     }
 
     public DynamicControlsPage clickCheckbox() {
-        clickBtn(getCheckboxBtn());
+        click(getCheckboxBtn());
         return this;
     }
 
     public DynamicControlsPage clickRemove() {
-        clickBtn(getRemoveBtn());
+        click(getRemoveBtn());
         return this;
     }
 
@@ -55,7 +55,7 @@ public class DynamicControlsPage extends BasePage {
     }
 
     public DynamicControlsPage clickEnableBtn() {
-        clickBtn(enableBtn);
+        click(enableBtn);
         return this;
     }
 

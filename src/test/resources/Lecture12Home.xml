@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Lecture12Home" thread-count="1" parallel="tests">
+
+    <test name="Collection change and sort">
+        <classes>
+            <class name="Lecture12.HwStream"></class>
+        </classes>
+    </test>
+
+    <test name="Email change">
+        <classes>
+            <class name="Lecture12.HwEmailChange"></class>
+        </classes>
+    </test>
+</suite>
+
+
+

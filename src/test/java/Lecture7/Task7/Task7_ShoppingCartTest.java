@@ -40,7 +40,7 @@ public class Task7_ShoppingCartTest extends BaseTest {
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
         shoppingCartPage.clickRemoveProduct(productName);
         new HeaderPage().clickNavigationBtn();
-        shoppingCartPage.clickBtn(By.id("inventory_sidebar_link"));
+        shoppingCartPage.click(By.id("inventory_sidebar_link"));
         ProductsListPage productsListPage = new ProductsListPage();
         String buttonCond = productsListPage.verifyBtnCondition(productName);
         //Проверили, что у продукта на кнопке ADD TO CART, т.е. он не в корзине

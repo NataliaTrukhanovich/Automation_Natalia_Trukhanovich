@@ -28,9 +28,9 @@ public String getElementProductPriceValue(String productName){
     return getElementProductPrice(productName).getText();
 }
 public void clickProductAddAndRemoveBtn(String productName){
-    clickBtn(getProductAddAndRemoveBtn(productName));
+    click(getProductAddAndRemoveBtn(productName));
 }
 public void clickBackToProducts(){
-    clickBtn(getButtonBack());
+    click(getButtonBack());
 }
 }

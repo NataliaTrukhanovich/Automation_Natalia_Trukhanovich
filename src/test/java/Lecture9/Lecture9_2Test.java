@@ -25,7 +25,7 @@ public class Lecture9_2Test extends BaseTest {
             System.out.println("Hello i'm test 2");
         }
 
-        @Test(timeOut = 1000, description = "Test 3 from lecture 9", priority = 3)
+        @Test(timeOut = 1000, description = "Test 3 from lecture 9", expectedExceptions = ThreadTimeoutException.class, priority = 3)
         public void test3() {
             pause(3);
             System.out.println("Hello i'm test 3");

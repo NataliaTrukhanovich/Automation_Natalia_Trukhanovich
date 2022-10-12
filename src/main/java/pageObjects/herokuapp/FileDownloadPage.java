@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class FileDownloadPage extends BasePage {
 
     public FileDownloadPage clickFileLinkForDownloading(String fileName) {
-        clickBtn(driver.findElement(By.partialLinkText(fileName)));
+        click(driver.findElement(By.partialLinkText(fileName)));
         return this;
     }
 

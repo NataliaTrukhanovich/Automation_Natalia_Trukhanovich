@@ -14,11 +14,11 @@ public class DynamicLoadingPage extends BasePage {
     }
 
     public DynamicLoadingPage clickOnExample(String textLink){
-        clickBtn(getByLink(textLink));
+        click(getByLink(textLink));
         return this;
     }
     public DynamicLoadingPage clickStart(){
-        clickBtn(startBtn);
+        click(startBtn);
         System.out.print("Текста на экране нет. Result is -> ");
         System.out.println(driver.findElement(By.xpath("//*[@id='finish']//h4")).isDisplayed());
         return this;

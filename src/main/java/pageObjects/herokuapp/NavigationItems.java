@@ -8,7 +8,8 @@ public enum NavigationItems {
     DYNAMIC_CONTROLS("Dynamic Controls"),
     FILE_UPLOAD("File Upload"),
     FILE_DOWNLOAD("File Download"),
-    SORTABLE_DATA_TABLES("Sortable Data Tables");
+    SORTABLE_DATA_TABLES("Sortable Data Tables"),
+    DROPDOWN("Dropdown");
     private String item;
 
     NavigationItems(String item) {
