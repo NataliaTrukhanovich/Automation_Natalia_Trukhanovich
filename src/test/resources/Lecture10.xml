@@ -3,7 +3,7 @@
 <suite name="Lecture10" thread-count="2" parallel="tests">
     <test name="Lecture10">
         <classes>
-            <class name="Lecture10.SortableDataTablesTest"></class>
+            <class name="Lecture10.Lecture10SortableDataTablesTest"></class>
         </classes>
     </test>
 </suite>

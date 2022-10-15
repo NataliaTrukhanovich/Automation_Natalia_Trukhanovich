@@ -14,7 +14,7 @@ public class CheckoutPageStepTwo extends BasePage {
         return driver.findElement(finishBtn);
     }
     public void clickFinishBtn(){
-        clickBtn(getFinishBtn());
+        click(getFinishBtn());
     }
     public CheckoutPageStepTwo verifyCheckoutPageStepTwo() {
         Assert.assertEquals(driver.findElement(title).getText(), "CHECKOUT: OVERVIEW");

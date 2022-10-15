@@ -13,7 +13,7 @@ public class FramesPage extends BasePage {
     }
 
     public FramesPage clickFrameLink(String linkText) {
-        clickBtn(clickLink(linkText));
+        click(clickLink(linkText));
         return this;
     }
     public FramesPage switchToFrame() {
@@ -30,7 +30,7 @@ public class FramesPage extends BasePage {
         return this;
     }
     public void clickBoldTxt(){
-        clickBtn(boldTxt);
+        click(boldTxt);
     }
 
 }

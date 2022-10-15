@@ -54,19 +54,19 @@ public class ShoppingCartPage extends BasePage {
     }
 
     public void clickRemoveProduct(String productName) {
-        clickBtn(getRemoveBtn(productName));
+        click(getRemoveBtn(productName));
     }
 
     public void clickRemoveAnyProduct(){
-        clickBtn(By.xpath("//div[@class='cart_item']//button"));
+        click(By.xpath("//div[@class='cart_item']//button"));
     }
 
     public void clickOneProductPage(String productName) {
-        clickBtn(getElementCartItemName(productName));
+        click(getElementCartItemName(productName));
     }
 
     public void clickCheckoutBtn() {
-        clickBtn(driver.findElement(By.xpath("//*[contains(@class,'checkout_button')]")));
+        click(driver.findElement(By.xpath("//*[contains(@class,'checkout_button')]")));
     }
 
 }

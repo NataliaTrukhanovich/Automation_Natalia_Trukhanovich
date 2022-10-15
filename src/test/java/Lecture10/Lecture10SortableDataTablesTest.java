@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 import static pageObjects.herokuapp.NavigationItems.SORTABLE_DATA_TABLES;
 
-public class SortableDataTablesTest extends BaseTest {
+public class Lecture10SortableDataTablesTest extends BaseTest {
     @BeforeMethod
     public void precondition() {
         new NavigationPage()
@@ -30,13 +30,10 @@ public class SortableDataTablesTest extends BaseTest {
 
     @Test
     public void mapDataTest(){
-        //объявляем мапу, кликаем на сайте по колонке "Last Name" и собираем в мапу сразу отсортированную таблицу
         Map<String, List<String>> mapTableData = new SortableDataTablesPage().checkTableIsDisplayed()
-                .clickTableColumn("Last Name").getTableData();
+                .clickTableColumn("Last Name").getMapTableData();
         System.out.println(mapTableData);
-        //кладём в lastNameData один столбец под именем Last Name
         List<String> lastNameData =  mapTableData.get("Last Name");
-        //сравниваем наш отсортированный столбец с сортировкой java через stream().sorted().collect
         Assert.assertEquals(lastNameData, lastNameData.stream().sorted().collect(Collectors.toList()));
     }
 

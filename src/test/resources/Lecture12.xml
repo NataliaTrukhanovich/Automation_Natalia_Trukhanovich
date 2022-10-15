@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Lecture12" thread-count="1" parallel="tests">
+
+    <parameter name="username" value="standard_user"></parameter>
+    <parameter name="password" value="secret_sauce"></parameter>
+
+    <test name="Product Test Saucedemo" enabled="false">
+        <classes>
+            <class name="Lecture11.LoginTest"></class>
+            <class name="Lecture12.Lecture12Test"></class>
+        </classes>
+    </test>
+
+    <test name="Currency sort Test herokuapp">
+        <classes>
+            <class name="Lecture12.Lecture12StreamSortTest"></class>
+        </classes>
+    </test>
+</suite>
+
+
+

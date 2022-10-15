@@ -13,11 +13,11 @@ public class LoginPage extends BasePage {
     private final By ERROR_MESSAGE = By.xpath("//h3[@data-test='error']");
 
     public LoginPage openTestPage() {
-        driver.get("https://www.saucedemo.com/");
+        load("https://www.saucedemo.com/");
         return this;
     }
     public LoginPage openTestPage(String url){
-        driver.get(url);
+        load(url);
         return this;
     }
 
@@ -32,12 +32,12 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage clickLoginBtn() {
-        clickBtn(this.LOGINBTN);
+        click(this.LOGINBTN);
         return this;
     }
 
     public LoginPage verifyLoginBtnExist() {
-        elementExist(LOGINBTN);
+        Assert.assertEquals(driver.findElements(LOGINBTN).size(), 1);
         return this;
     }
 
@@ -50,10 +50,13 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage verifyThatLoginPageIsClosed() {
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(LOGINBTN));
+        Assert.assertTrue(elementNotExist(LOGINBTN));
         return this;
     }
     public void authorization(){
-        openTestPage("https://www.saucedemo.com/").setUsername("standard_user").setPassword("secret_sauce").clickLoginBtn();
+        openTestPage("https://www.saucedemo.com/")
+                .setUsername("standard_user")
+                .setPassword("secret_sauce")
+                .clickLoginBtn();
     }
 }

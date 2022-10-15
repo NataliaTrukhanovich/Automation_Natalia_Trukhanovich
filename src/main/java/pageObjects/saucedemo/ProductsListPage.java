@@ -13,36 +13,48 @@ public class ProductsListPage extends BasePage {
     public void ProductsListPage() {
         verifyPageUri();
     }
-    public void verifyPageUri() {
+
+    public ProductsListPage verifyPageUri() {
         Assert.assertTrue(driver.getCurrentUrl().contains("inventory.html"));
+        return this;
     }
-    public void verifyPageTitle() {
+
+    public ProductsListPage verifyPageTitle() {
         System.out.println(getText(TITLE));
         Assert.assertEquals(getText(TITLE), "PRODUCTS");
+        return this;
     }
+
     private WebElement getElementProduct(String productName) {
         return driver.findElement(By.xpath("//*[@class = 'inventory_item_name' and text() = '" + productName + "']//ancestor::div[@class='inventory_item']"));
     }
 
-    private WebElement getProductPrice(String productName){
+    private WebElement getProductPrice(String productName) {
         return getElementProduct(productName).findElement(By.className("inventory_item_price"));
     }
+
     private WebElement getAddToCartBtn(String productName) {
         return getElementProduct(productName).findElement(By.tagName("button"));
     }
 
-    public void clickAddToCartBtn(String productName){
-        clickBtn(getAddToCartBtn(productName));
+    public void elementsExist(By locator) {
+        Assert.assertEquals(driver.findElements(locator).size(), 6);
     }
 
-    public String getProductCost(String productName){
+    public ProductsListPage clickAddToCartBtn(String productName) {
+        click(getAddToCartBtn(productName));
+        return this;
+    }
+
+    public String getProductCost(String productName) {
         return getText(getProductPrice(productName));
     }
 
     public void verifyProblemUser() {
-        elementsExist(ERROR_IMG);
+        Assert.assertEquals(driver.findElements(ERROR_IMG).size(), 6);
     }
-    public String verifyBtnCondition(String productName){
+
+    public String verifyBtnCondition(String productName) {
         return getAddToCartBtn(productName).getText();
     }
 

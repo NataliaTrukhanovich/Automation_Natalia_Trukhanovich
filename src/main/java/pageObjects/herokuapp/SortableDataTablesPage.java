@@ -18,7 +18,7 @@ public class SortableDataTablesPage extends BasePage {
     }
 
     public SortableDataTablesPage clickTableColumn(String columnName) {
-        driver.findElement(headers).findElement(By.xpath(".//span[text()='" + columnName + "']")).click();
+        driver.findElement(headers).findElement(By.xpath("//span[text()='" + columnName + "']")).click();
         return this;
     }
 
@@ -39,7 +39,7 @@ public class SortableDataTablesPage extends BasePage {
         return data;                                                        //вернули собранную с сайта таблицу в виде листа листов
     }
 
-    public Map<String, List<String>> getTableData() {
+    public Map<String, List<String>> getMapTableData() {
         //объявляем мапу, в которой ключом будет заголовок столбца таблицы (эл-т типа String)
         //а значением - лист (колонка таблицы List<String>)
         Map<String, List<String>> mapData = new HashMap<>();
