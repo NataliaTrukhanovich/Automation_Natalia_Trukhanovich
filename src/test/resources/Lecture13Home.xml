@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Lecture13" thread-count="3" parallel="tests">
+
+    <parameter name="url" value="http://saucedemo.com/"></parameter>
+
+    <test name="Saucedemo test (PageFactory)">
+        <parameter name="username" value="standard_user"></parameter>
+        <parameter name="password" value="secret_sauce"></parameter>
+        <classes>
+            <class name="Lecture13.Homework.SaucedemoPageFactoryTest"></class>
+        </classes>
+    </test>
+
+    <test name="Saucedemo test (Value Object)">
+        <classes>
+            <class name="Lecture13.Homework.SaucedemoValueObjectTest"></class>
+        </classes>
+    </test>
+
+    <test name="Saucedemo test (Builder)">
+        <classes>
+            <class name="Lecture13.Homework.SaucedemoBuilderTest"></class>
+        </classes>
+    </test>
+</suite>
+
+
+
