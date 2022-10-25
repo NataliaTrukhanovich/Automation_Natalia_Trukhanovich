@@ -10,6 +10,9 @@ import lombok.ToString;
 public class Saucedemo {
     String login;
     String password;
+    String firstName;
+    String lastName;
+    String zipName;
 
     public static class SaucedemoBuilder {
         public SaucedemoBuilder() {

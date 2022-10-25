@@ -81,7 +81,6 @@ public abstract class BasePage {
     }
 
     public void click(WebElement webElement) {
-        log.debug("Click on webElement :: ");
         new UIElement(driver, wait, webElement).click();
     }
 
