@@ -1,5 +1,6 @@
 package Lecture9;
 
+import lombok.extern.log4j.Log4j;
 import pageObjects.baseObjects.BaseTest;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -9,7 +10,7 @@ import testNGUtils.Retry;
 
 import static org.testng.TestRunner.PriorityWeight.priority;
 
-
+@Log4j
 public class Lecture9_2Test extends BaseTest {
 
         int count = 1;
@@ -17,46 +18,46 @@ public class Lecture9_2Test extends BaseTest {
 
         @Test(enabled = false, priority = 1)
         public void test1() {
-            System.out.println("Hello i'm test 1");
+            log.debug("Hello i'm test 1");
         }
 
         @Test(enabled = true, priority = 2)
         public void test2() {
-            System.out.println("Hello i'm test 2");
+            log.debug("Hello i'm test 2");
         }
 
         @Test(timeOut = 1000, description = "Test 3 from lecture 9", expectedExceptions = ThreadTimeoutException.class, priority = 3)
         public void test3() {
             pause(3);
-            System.out.println("Hello i'm test 3");
+            log.debug("Hello i'm test 3");
         }
 
         @Test(dependsOnMethods = "test3", priority = 4)
         public void test4() {
-            System.out.println("Hello i'm test 4");
+            log.debug("Hello i'm test 4");
         }
 
         @BeforeMethod
         public void beforeMethod() {
-            System.out.println("Hello i'm  @BeforeMethod");
+            log.debug("Hello i'm  @BeforeMethod");
         }
 
         @Test(invocationCount = 5, threadPoolSize = 5, priority = 5)
         public void test5() {
             pause(1);
-            System.out.println("Hello i'm test 5 and this is my repeat #" + count++);
+            log.debug("Hello i'm test 5 and this is my repeat #" + count++);
         }
 
         @AfterMethod
         public void afterMethod() {
-            System.out.println("Hello i'm @AfterMethod");
+            log.debug("Hello i'm @AfterMethod");
         }
 
         @Test(timeOut = 1000, priority = 6, retryAnalyzer = Retry.class)
         public void test6() {
             timeout--;
             pause(timeout);
-            System.out.println("Hello i'm test 6 with timeout #" + timeout);
+            log.debug("Hello i'm test 6 with timeout #" + timeout);
         }
 
         private void pause(long timeout) {

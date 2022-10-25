@@ -10,10 +10,9 @@ import pageObjects.saucedemo.HeaderPage;
 
 public class ShoppingCartTest extends BaseTest {
 
-    @Parameters({"username","password"})
     @Test(description = "Test with two steps")
-    public void verifyFullBasket(String username, String password){
-        new LoginStep().login(username, password);
+    public void verifyFullBasket(){
+        new LoginStep().login();
         new AddProductToBasketStep().addToBasket();
         Assert.assertEquals(new HeaderPage().quantityOfProducts(), "5");
     }

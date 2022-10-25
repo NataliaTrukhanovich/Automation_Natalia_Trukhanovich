@@ -1,10 +1,13 @@
 package pageObjects.herokuapp;
 
+import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import pageObjects.baseObjects.BasePage;
+
+@Log4j
 
 public class DynamicControlsPage extends BasePage {
     private By checkboxBtn = By.xpath("//input[@type='checkbox']");
@@ -49,7 +52,7 @@ public class DynamicControlsPage extends BasePage {
     }
 
     public DynamicControlsPage isDisableInput() {
-        System.out.println("Input is " + getInputTxt().isEnabled());
+        log.debug("Input is " + getInputTxt().isEnabled());
         Assert.assertFalse(getInputTxt().isEnabled());
         return this;
     }
@@ -61,7 +64,7 @@ public class DynamicControlsPage extends BasePage {
 
     public DynamicControlsPage isEnableInput() {
         wait.until(ExpectedConditions.elementToBeClickable(getInputTxt()));
-        System.out.println("Input is " + getInputTxt().isEnabled());
+        log.debug("Input is " + getInputTxt().isEnabled());
         Assert.assertTrue(getInputTxt().isEnabled());
         return this;
     }

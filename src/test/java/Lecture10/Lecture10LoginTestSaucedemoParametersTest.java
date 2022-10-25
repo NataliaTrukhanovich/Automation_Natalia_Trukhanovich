@@ -1,15 +1,16 @@
 package Lecture10;
 
+import lombok.extern.log4j.Log4j;
 import org.testng.annotations.Test;
 import pageObjects.baseObjects.BaseTest;
 import pageObjects.saucedemo.LoginPage;
 import pageObjects.saucedemo.ProductsListPage;
-
+@Log4j
 public class Lecture10LoginTestSaucedemoParametersTest extends BaseTest {
     @Test
     public void loginTest() {
         new LoginPage()
-                .openTestPage()
+                .openTestPage("https://www.saucedemo.com/")
                 .setUsername(System.getProperty("username"))
                 .setPassword(System.getProperty("password"))
                 .clickLoginBtn()
@@ -19,6 +20,6 @@ public class Lecture10LoginTestSaucedemoParametersTest extends BaseTest {
 
     @Test
     public void exampleTest() {
-        System.out.println("Test for example");
+        log.debug("Test for example");
     }
 }

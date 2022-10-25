@@ -1,11 +1,13 @@
 package pageObjects.saucedemo;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import pageObjects.baseObjects.BasePage;
+import pageObjects.saucedemo.entity.Saucedemo;
 import pageObjects.saucedemo.entity.SaucedemoBuilder;
 import pageObjects.saucedemo.entity.SaucedemoValOb;
+import pageObjects.saucedemo.entity.SaucedemoValObL;
+
 
 public class LoginPage extends BasePage {
 
@@ -15,7 +17,7 @@ public class LoginPage extends BasePage {
     private final By ERROR_MESSAGE = By.xpath("//h3[@data-test='error']");
 
     public LoginPage openTestPage() {
-        load("https://www.saucedemo.com/");
+        load();
         return this;
     }
     public LoginPage openTestPage(String url){
@@ -32,7 +34,14 @@ public class LoginPage extends BasePage {
         enter(this.PASSWORD, password);
         return this;
     }
-
+    public LoginPage setUsername() {
+        enter(this.USERNAME, properties.getProperty("username"));
+        return this;
+    }
+    public LoginPage setPassword() {
+        enter(this.PASSWORD, properties.getProperty("password"));
+        return this;
+    }
     public LoginPage clickLoginBtn() {
         click(this.LOGINBTN);
         return this;
@@ -44,14 +53,21 @@ public class LoginPage extends BasePage {
          clickLoginBtn();
          return this;
     }
+    public LoginPage enterData(SaucedemoValObL saucedemoValObl){
+        setUsername(saucedemoValObl.getUserName());
+        setPassword(saucedemoValObl.getPassword());
+        clickLoginBtn();
+        return this;
+    }
 
     public LoginPage verifyLoginBtnExist() {
         Assert.assertEquals(driver.findElements(LOGINBTN).size(), 1);
         return this;
     }
 
-    public void verifyErrorMessage() {
+    public LoginPage verifyErrorMessage() {
         Assert.assertEquals(getText(ERROR_MESSAGE), "Epic sadface: Sorry, this user has been locked out.");
+        return this;
     }
 
     public void verifyErrorMessageExist(){
@@ -72,5 +88,11 @@ public class LoginPage extends BasePage {
         setUsername(saucedemoBuilder.getLogin());
         setPassword(saucedemoBuilder.getPassword());
         clickLoginBtn();
+    }
+    public LoginPage authorizationBuilderL(Saucedemo saucedemo){
+        setUsername(saucedemo.getLogin());
+        setPassword(saucedemo.getPassword());
+        clickLoginBtn();
+        return this;
     }
 }

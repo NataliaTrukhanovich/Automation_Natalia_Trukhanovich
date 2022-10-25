@@ -1,5 +1,8 @@
 package pageObjects.moodpanda.entity;
 
+import lombok.extern.log4j.Log4j;
+
+@Log4j
 public class SignUpBuilder {
     private String firstName;
     private String lastName;
@@ -12,39 +15,39 @@ public class SignUpBuilder {
 
         public Builder() {
             this.signUpBuilder = new SignUpBuilder();
-            System.out.println("New instance from constructor "+signUpBuilder+" ");
+            log.debug("New instance from constructor "+signUpBuilder+" ");
         }
         public Builder withFirstName(String firstName) {
-            System.out.println("firstName");
+            log.debug("With firstName");
             signUpBuilder.firstName = firstName;
             return this;
         }
 
         public Builder withLastName(String lastName) {
-            System.out.println("lastName");
+            log.debug("With lastName");
             signUpBuilder.lastName = lastName;
             return this;
         }
 
         public Builder withEmail(String email) {
-            System.out.println("mail");
+            log.debug("With mail");
             signUpBuilder.email = email;
             return this;
         }
 
         public Builder withPassword(String password) {
-            System.out.println("passssword");
+            log.debug("With password");
             signUpBuilder.password = password;
             return this;
         }
 
         public Builder withCheckbox(Boolean checkbox) {
-            System.out.println("checkbox");
+            log.debug("With checkbox");
             signUpBuilder.checkbox = checkbox;
             return this;
         }
         public SignUpBuilder build(){
-            System.out.println("Method build");
+            log.debug("Running method build");
             return signUpBuilder;
         }
     }

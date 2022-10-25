@@ -1,8 +1,8 @@
 package pageObjects.saucedemo.entity;
 
 public class SaucedemoBuilder {
-    private String login;
-    private String password;
+    private String login="";
+    private String password="";
 
     public static class Builder{
         SaucedemoBuilder saucedemoBuilder;

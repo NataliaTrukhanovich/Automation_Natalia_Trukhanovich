@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Lecture11" thread-count="2" parallel="tests">
-
-    <parameter name="username" value="standard_user"></parameter>
-    <parameter name="password" value="secret_sauce"></parameter>
+<suite name="Lecture11Home" thread-count="2" parallel="tests">
 
     <test name="Product Test With steps">
         <classes>
             <class name="Lecture11.ShoppingCartTest"></class>
-
         </classes>
     </test>
 

@@ -1,12 +1,13 @@
 package pageObjects.herokuapp;
 
+import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import pageObjects.baseObjects.BasePage;
 
 import java.io.File;
 import java.util.Arrays;
-
+@Log4j
 public class FileDownloadPage extends BasePage {
 
     public FileDownloadPage clickFileLinkForDownloading(String fileName) {
@@ -16,7 +17,7 @@ public class FileDownloadPage extends BasePage {
 
     public void checkDownloadedFile(String fileName) {
         File folder = new File(System.getProperty("user.home") + "\\Downloads\\");
-        System.out.println(folder);
+        log.debug(folder);
         boolean status = false;
 
         for (int counter = 0; counter <= 60; counter++) {

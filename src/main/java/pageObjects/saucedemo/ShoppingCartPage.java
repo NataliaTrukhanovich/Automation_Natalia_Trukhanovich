@@ -1,16 +1,17 @@
 package pageObjects.saucedemo;
 
+import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import pageObjects.baseObjects.BasePage;
-
+@Log4j
 public class ShoppingCartPage extends BasePage {
 
     final String TITLE = getText(driver.findElement(By.xpath("//span[@class='title']")));
 
     public void verifyPageTitle() {
-        System.out.println(TITLE);
+        log.debug(TITLE);
         Assert.assertEquals(TITLE, "YOUR CART");
     }
 
@@ -36,14 +37,14 @@ public class ShoppingCartPage extends BasePage {
 
     public String getElementCartItemPriceValue(String productName) {
         String price = getElementCartItemPrice(productName).getText();
-        System.out.println(price);
+        log.debug(price);
         // return getElementCartItemPrice(productName).getText();
         return price;
     }
 
     public String getElementCartItemQuantityValue(String productName) {
         String quantity = getElementCartItemQuantity(productName).getText();
-        System.out.println(quantity);
+        log.debug(quantity);
         return quantity;
         //   return getElementCartItemQuantity(productName).getText();
 

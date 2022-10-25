@@ -2,9 +2,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Lecture11" thread-count="2" parallel="tests">
 
-    <parameter name="username" value="standard_user"></parameter>
-    <parameter name="password" value="secret_sauce"></parameter>
-
     <test name="Product Test With steps">
         <classes>
             <class name="Lecture11.ProductPageTest"></class>

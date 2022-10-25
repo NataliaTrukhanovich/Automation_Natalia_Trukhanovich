@@ -33,7 +33,7 @@ public class Task6 {
         System.out.println("Product Name: " + getWebDriver().findElement(By.xpath("//div[text()='Sauce Labs Backpack']")).getText());
 
 
-        /**   Создать отдельный Java-класс Task_6 с тестом, сценарий:
+        /**   Создать отдельный Java-класс Task6 с тестом, сценарий:
          a.	Залогиниться https://www.saucedemo.com/
          b.	Добавить товар в корзину
          c.	Перейти в корзину

@@ -1,5 +1,6 @@
 package Lecture9.Homework9;
 
+import lombok.extern.log4j.Log4j;
 import org.testng.ITestContext;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -7,7 +8,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.baseObjects.BaseTest;
 import pageObjects.saucedemo.LoginPage;
-
+@Log4j
 public class Hw9LoginTest extends BaseTest {
 
     @Parameters("url")
@@ -25,10 +26,10 @@ public class Hw9LoginTest extends BaseTest {
                 .clickLoginBtn();
         if (status == 'p') {
             loginPage.verifyThatLoginPageIsClosed();
-            System.out.println("позитивный тест");
+            log.debug("позитивный тест");
         } else {
             loginPage.verifyErrorMessageExist();
-            System.out.println("негативный тест");
+            log.debug("негативный тест");
         }
     }
 

@@ -2,9 +2,14 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Lecture14Home" thread-count="1" parallel="tests">
 
-    <test name="Saucedemo test Lombok">
+    <test name="Saucedemo test Builder Lombok">
         <classes>
-            <class name="Lecture14.SaucedemoBuilderTest"></class>
+            <class name="Lecture14.Homework.SaucedemoLoginBuilderTest"></class>
+        </classes>
+    </test>
+    <test name="Saucedemo test Value Object Lombok">
+        <classes>
+            <class name="Lecture14.Homework.SaucedemoValueObjectTest"></class>
         </classes>
     </test>
 </suite>
