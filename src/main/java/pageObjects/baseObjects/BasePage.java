@@ -35,9 +35,11 @@ public abstract class BasePage {
     protected WebElement findElement(By locator) {
         return driver.findElement(locator);
     }
+
     protected List<WebElement> findElements(By locator) {
         return driver.findElements(locator);
     }
+
     protected void load(String url) {
         System.out.println("Open page :: " + url);
         driver.get(url);
@@ -50,13 +52,19 @@ public abstract class BasePage {
 
     public void enter(By locator, String enterData) {
         System.out.println("Enter text by locator :: " + locator);
-       findElement(locator).clear();
+        findElement(locator).clear();
         findElement(locator).sendKeys(enterData);
     }
 
+    protected void enter(WebElement webElement, String enterData) {
+        System.out.println("I'm enter :: " + enterData + ", by web element :: " + webElement);
+        webElement.clear();
+        webElement.sendKeys(enterData);
+    }
+
     public void click(By locator) {
-        System.out.println("Click on element by locator :: " + locator);
         verifyElementClickable(locator);
+        System.out.println("Click on element by locator :: " + locator);
         findElement(locator).click();
     }
 

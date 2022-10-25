@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Lecture13" thread-count="1" parallel="tests">
+
+    <parameter name="url" value="http://moodpanda.com/"></parameter>
+
+    <test name="Moodpanda test (PageFactory)" enabled="false">
+        <parameter name="email" value="mail@mail.com"></parameter>
+        <parameter name="password" value="secret_sauce"></parameter>
+        <classes>
+            <class name="Lecture13.LoginPageFactoryTest"></class>
+        </classes>
+    </test>
+
+    <test name="Moodpanda test (Loadable Page/Component)" enabled="false">
+        <parameter name="email" value="mail@mail.com"></parameter>
+        <parameter name="password" value="secret_sauce"></parameter>
+        <classes>
+            <class name="Lecture13.LoginLoadableComponentTest"></class>
+        </classes>
+    </test>
+
+    <test name="Moodpanda test (Value Object)" enabled="false">
+        <classes>
+            <class name="Lecture13.SignUpValueObjectTest"></class>
+        </classes>
+    </test>
+
+    <test name="Moodpanda test (Builder)">
+        <classes>
+            <class name="Lecture13.SignUpBuilderTest"></class>
+        </classes>
+    </test>
+</suite>
+
+
+
