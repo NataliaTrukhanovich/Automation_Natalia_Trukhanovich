@@ -20,7 +20,8 @@ public class LoginPage extends BasePage {
         load();
         return this;
     }
-    public LoginPage openTestPage(String url){
+
+    public LoginPage openTestPage(String url) {
         load(url);
         return this;
     }
@@ -34,26 +35,30 @@ public class LoginPage extends BasePage {
         enter(this.PASSWORD, password);
         return this;
     }
+
     public LoginPage setUsername() {
         enter(this.USERNAME, properties.getProperty("username"));
         return this;
     }
+
     public LoginPage setPassword() {
         enter(this.PASSWORD, properties.getProperty("password"));
         return this;
     }
+
     public LoginPage clickLoginBtn() {
         click(this.LOGINBTN);
         return this;
     }
 
-    public LoginPage enterData(SaucedemoValOb saucedemoValOb){
-         setUsername(saucedemoValOb.getUserName());
-         setPassword(saucedemoValOb.getPassword());
-         clickLoginBtn();
-         return this;
+    public LoginPage enterData(SaucedemoValOb saucedemoValOb) {
+        setUsername(saucedemoValOb.getUserName());
+        setPassword(saucedemoValOb.getPassword());
+        clickLoginBtn();
+        return this;
     }
-    public LoginPage enterData(SaucedemoValObL saucedemoValObl){
+
+    public LoginPage enterData(SaucedemoValObL saucedemoValObl) {
         setUsername(saucedemoValObl.getUserName());
         setPassword(saucedemoValObl.getPassword());
         clickLoginBtn();
@@ -70,26 +75,29 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    public void verifyErrorMessageExist(){
-       driver.findElement(ERROR_MESSAGE).isDisplayed();
+    public void verifyErrorMessageExist() {
+        driver.findElement(ERROR_MESSAGE).isDisplayed();
     }
 
     public LoginPage verifyThatLoginPageIsClosed() {
         Assert.assertTrue(elementNotExist(LOGINBTN));
         return this;
     }
-    public void authorization(){
+
+    public void authorization() {
         openTestPage("https://www.saucedemo.com/")
                 .setUsername("standard_user")
                 .setPassword("secret_sauce")
                 .clickLoginBtn();
     }
-    public void authorizationBuilder(SaucedemoBuilder saucedemoBuilder){
+
+    public void authorizationBuilder(SaucedemoBuilder saucedemoBuilder) {
         setUsername(saucedemoBuilder.getLogin());
         setPassword(saucedemoBuilder.getPassword());
         clickLoginBtn();
     }
-    public LoginPage authorizationBuilderL(Saucedemo saucedemo){
+
+    public LoginPage authorizationBuilderL(Saucedemo saucedemo) {
         setUsername(saucedemo.getLogin());
         setPassword(saucedemo.getPassword());
         clickLoginBtn();

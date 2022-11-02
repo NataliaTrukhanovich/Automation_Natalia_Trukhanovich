@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.stream.Collectors;
 
-import static Driver.SimpleDriver.getWebDriver;
+import static Driver.DriverManager.getDriver;
 import static propertyHelper.PropertyReader.getProperties;
 
 @Log4j
@@ -26,7 +26,7 @@ public abstract class BasePage {
     protected Properties properties;
 
     protected BasePage() {
-        driver = getWebDriver();
+        driver = getDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         actions = new Actions(driver);
         properties = getProperties();

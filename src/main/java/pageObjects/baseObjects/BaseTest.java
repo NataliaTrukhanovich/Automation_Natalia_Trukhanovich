@@ -1,6 +1,8 @@
 package pageObjects.baseObjects;
 
+import Driver.DriverManagerFactory;
 import Driver.SimpleDriver;
+import io.github.bonigarcia.wdm.config.DriverManagerType;
 import lombok.extern.log4j.Log4j;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -12,8 +14,9 @@ import testNGUtils.Listener;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Properties;
 
-import static Driver.SimpleDriver.closeWebDriver;
 import static propertyHelper.PropertyReader.getProperties;
+import static Driver.DriverManagerFactory.getManager;
+import static Driver.DriverManager.closeDriver;
 
 @Listeners({Listener.class, InvokedMethodListener.class, ExtentReportListener.class})
 @Log4j
@@ -24,8 +27,9 @@ public abstract class BaseTest {
     @BeforeTest()
     public void setUpDriver() {
         log.debug("Starting new web driver!");
-        new SimpleDriver();
-        properties=getProperties();
+        properties = getProperties();
+        getManager(DriverManagerType
+                .valueOf(properties.containsKey("browser") ? properties.getProperty("browser").toUpperCase() : "CHROME"));
     }
 
     protected <T> T get(Class<T> page) {
@@ -42,6 +46,6 @@ public abstract class BaseTest {
     @AfterTest()
     public void stopDriver() {
         log.debug("Closing web driver!");
-        closeWebDriver();
+        closeDriver();
     }
 }
