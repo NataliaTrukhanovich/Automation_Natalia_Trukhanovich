@@ -21,7 +21,7 @@ public class Lecture14Test extends BaseTest {
         log.debug(person1+"\n");
     }
 
-    @Test
+    @Test(enabled = false)
     public void carTest() {
         Car car = new Car() {
             {
@@ -34,7 +34,7 @@ public class Lecture14Test extends BaseTest {
         log.debug(car.getModel());
     }
 
-    @Test
+    @Test(enabled = false)
     public void homeTest(){
         Home home = new Home.HomeBuilder().withAddress("Vitebsk").withWinCount(10).create();
         log.debug(home);
