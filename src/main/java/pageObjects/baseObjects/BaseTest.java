@@ -1,7 +1,5 @@
 package pageObjects.baseObjects;
 
-import Driver.DriverManagerFactory;
-import Driver.SimpleDriver;
 import io.github.bonigarcia.wdm.config.DriverManagerType;
 import lombok.extern.log4j.Log4j;
 import org.testng.annotations.AfterTest;
@@ -14,9 +12,9 @@ import testNGUtils.Listener;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Properties;
 
-import static propertyHelper.PropertyReader.getProperties;
-import static Driver.DriverManagerFactory.getManager;
 import static Driver.DriverManager.closeDriver;
+import static Driver.DriverManagerFactory.getManager;
+import static propertyHelper.PropertyReader.getProperties;
 
 @Listeners({Listener.class, InvokedMethodListener.class, ExtentReportListener.class})
 @Log4j

@@ -14,7 +14,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <testng.version>7.6.1</testng.version>
-        <selenium.version>4.5.0</selenium.version>
+        <selenium.version>4.5.3</selenium.version>
         <webdrivermanager.version>5.3.0</webdrivermanager.version>
         <extentreports.version>2.41.2</extentreports.version>
         <allure.testng.version>2.19.0</allure.testng.version>
@@ -23,6 +23,7 @@
         <logging.log4j.version>2.19.0</logging.log4j.version>
         <dataformat.version>2.13.4</dataformat.version>
         <selenide.version>6.9.0</selenide.version>
+        <cucumber.version>7.8.1</cucumber.version>
 
         <suiteXml/>
 
@@ -87,12 +88,27 @@
             <artifactId>selenide</artifactId>
             <version>${selenide.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-core -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-core</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.17</version>
+            <version>8.0.30</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -106,7 +122,8 @@
                         <suiteXmlFile>src/test/resources/${suiteXml}.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <argLine>
-                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/1.9.6/aspectjweaver-1.9.6.jar -Xmx256m
+                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/1.9.6/aspectjweaver-1.9.6.jar
+                        -Xmx256m
                     </argLine>
                 </configuration>
                 <dependencies>
@@ -125,5 +142,5 @@
 
         </plugins>
     </build>
-    
+
 </project>
