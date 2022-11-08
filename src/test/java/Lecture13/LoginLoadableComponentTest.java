@@ -1,6 +1,5 @@
 package Lecture13;
 
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.baseObjects.BaseTest;
 import pageObjects.moodpanda.HomePage;
@@ -8,15 +7,14 @@ import pageObjects.moodpanda.LoginPage;
 
 public class LoginLoadableComponentTest extends BaseTest {
 
-    @Parameters({"url", "email", "password"})
     @Test
-    public void login_Test(String url, String email, String password) {
+    public void login_Test() {
         new HomePage()
-                .open(url)
+                .open()
                 .clickGetStarted();
         new LoginPage()
-                .enterEmail(email)
-                .enterPassword(password)
+                .enterEmail(properties.getProperty("email"))
+                .enterPassword(properties.getProperty("password"))
                 .clickLogin()
                 .verifyErrorMessage("Your email or password is wrong");
     }

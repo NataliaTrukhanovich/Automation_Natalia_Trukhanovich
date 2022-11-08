@@ -7,11 +7,11 @@ import pageObjects.saucedemo.LoginPage;
 public class LoginStep extends BasePage {
 
     @Step("Login step")
-    public LoginStep login(String username, String password) {
+    public LoginStep login() {
         new LoginPage()
                 .openTestPage()
-                .setUsername(username)
-                .setPassword(password)
+                .setUsername()
+                .setPassword()
                 .clickLoginBtn();
         return this;
     }

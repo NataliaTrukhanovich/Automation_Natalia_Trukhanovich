@@ -1,14 +1,21 @@
 package testNGUtils;
 
+import lombok.extern.log4j.Log4j;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.Reporter;
+import propertyHelper.PropertyReader;
 
+@Log4j
 public class Listener implements ITestListener {
     @Override
     public void onStart(ITestContext context) {
-        Reporter.log(context.getSuite().getXmlSuite().getTest());
+
+        log.debug("config value from suite = " + context.getSuite().getParameter("config"));
+        String propertyName = (context.getSuite().getParameter("config")) == null ? System.getProperty("config") :
+                context.getSuite().getParameter("config");
+        new PropertyReader(propertyName);
     }
 
     @Override

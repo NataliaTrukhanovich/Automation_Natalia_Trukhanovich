@@ -10,18 +10,17 @@ import pageObjects.moodpanda.entity.SignUpValOb;
 
 public class SignUpValueObjectTest extends BaseTest {
 
-    @Parameters({"url", "email", "password"})
     @Test
-    public void loginTest(String url, String email, String password) {
-        new HomePage().open(url);
+    public void loginTest() {
+        new HomePage().open();
         new NavigationPage().clickSignUp();
 
         SignUpValOb signUp = new SignUpValOb() {{
-            setEmail("email");
+            setEmail(properties.getProperty("email"));
             setCheckbox(true);
             setFirstName("First Name");
             setLastName("S");
-            setPassword("password");
+            setPassword(properties.getProperty("password"));
         }};
 
         new SignUpPage().enterData(signUp);

@@ -1,5 +1,6 @@
 package Lecture12;
 
+import lombok.extern.log4j.Log4j;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -13,7 +14,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
+@Log4j
 public class Lecture12StreamSortTest extends BaseTest {
 
     @BeforeMethod
@@ -38,10 +39,10 @@ public class Lecture12StreamSortTest extends BaseTest {
         List<Double> currencyData = mapTableData.get("Due").stream()
                 .map(currency -> Double.parseDouble(currency.replace("$", "")))
                 .collect(Collectors.toList());
-        System.out.println(currencyData);
+        log.debug(currencyData);
         List<Double> sortData = currencyData;
         Collections.sort(sortData);
-        System.out.println(currencyData);
+        log.debug(currencyData);
         Assert.assertEquals(currencyData, sortData);
     }
 

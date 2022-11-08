@@ -1,10 +1,12 @@
 package pageObjects.herokuapp;
 
+import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import pageObjects.baseObjects.BasePage;
 
+@Log4j
 public class FileUploadPage extends BasePage {
     private By chooseAFileBtn = By.id("file-upload");
     private By uploadBtn = By.id("file-submit");
@@ -35,8 +37,8 @@ public class FileUploadPage extends BasePage {
     }
 
     public void verifyFileNames() {
-        System.out.println("Path to file   " + pathToFile);
-        System.out.println("Name of the Uploaded File on the Page:  " + getNameOfUploadedFile());
+        log.debug("Path to file   " + pathToFile);
+        log.debug("Name of the Uploaded File on the Page:  " + getNameOfUploadedFile());
         Assert.assertTrue(pathToFile.contains(getNameOfUploadedFile()));
     }
 }

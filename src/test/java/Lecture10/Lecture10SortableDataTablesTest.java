@@ -1,5 +1,6 @@
 package Lecture10;
 
+import lombok.extern.log4j.Log4j;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -12,7 +13,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import static pageObjects.herokuapp.NavigationItems.SORTABLE_DATA_TABLES;
-
+@Log4j
 public class Lecture10SortableDataTablesTest extends BaseTest {
     @BeforeMethod
     public void precondition() {
@@ -32,7 +33,7 @@ public class Lecture10SortableDataTablesTest extends BaseTest {
     public void mapDataTest(){
         Map<String, List<String>> mapTableData = new SortableDataTablesPage().checkTableIsDisplayed()
                 .clickTableColumn("Last Name").getMapTableData();
-        System.out.println(mapTableData);
+        log.debug(mapTableData);
         List<String> lastNameData =  mapTableData.get("Last Name");
         Assert.assertEquals(lastNameData, lastNameData.stream().sorted().collect(Collectors.toList()));
     }

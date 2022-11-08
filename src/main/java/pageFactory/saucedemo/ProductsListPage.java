@@ -1,12 +1,13 @@
 package pageFactory.saucedemo;
 
+import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import pageObjects.baseObjects.BasePage;
-
+@Log4j
 public class ProductsListPage extends BasePage {
 
     @FindBy(xpath = "//span[@class='title']")
@@ -28,7 +29,7 @@ public class ProductsListPage extends BasePage {
     }
 
     public ProductsListPage verifyPageTitle() {
-        System.out.println("Page title: " + getText(title));
+        log.debug("Page title: " + getText(title));
         Assert.assertEquals(getText(title), "PRODUCTS");
         return this;
     }

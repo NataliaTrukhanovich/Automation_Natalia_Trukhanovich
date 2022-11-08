@@ -9,11 +9,11 @@ import pageObjects.saucedemo.ProductsListPage;
 
 public class ProductPageTest extends BaseTest {
 
-    @Parameters({"username","password","steps"})
+    @Parameters("steps")
     @Test
-    public void verifyProductPage(String username, String password, @Optional("0") String steps)
+    public void verifyProductPage(@Optional("0") String steps)
     {
-        if (steps.equals("0")) get(LoginStep.class).login(username, password);
+        if (steps.equals("0")) get(LoginStep.class).login();
         get(ProductsListPage.class).verifyPageTitle();
     }
 }

@@ -1,10 +1,11 @@
 package pageObjects.moodpanda;
 
+import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.By;
 import pageObjects.baseObjects.BasePage;
 import pageObjects.moodpanda.entity.SignUpBuilder;
 import pageObjects.moodpanda.entity.SignUpValOb;
-
+@Log4j
 public class SignUpPage extends BasePage {
     private By firstName = By.cssSelector("[placeholder='Your first name']");
     private By lastNameInitial = By.xpath("//div[@class='control']//input[contains(@placeholder,'e.g.')]");
@@ -24,7 +25,7 @@ public class SignUpPage extends BasePage {
     }
 
     public SignUpPage enterEmail(String email) {
-        System.out.println(email);
+        log.debug(email);
         enter(this.email, email);
         return this;
     }

@@ -1,10 +1,13 @@
 package pageObjects.saucedemo;
 
+import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import pageObjects.baseObjects.BasePage;
+import pageObjects.saucedemo.entity.SaucedemoValObL;
 
+@Log4j
 public class ProductsListPage extends BasePage {
 
     private final By TITLE = By.xpath("//span[@class='title']");
@@ -20,7 +23,7 @@ public class ProductsListPage extends BasePage {
     }
 
     public ProductsListPage verifyPageTitle() {
-        System.out.println(getText(TITLE));
+        log.debug(getText(TITLE));
         Assert.assertEquals(getText(TITLE), "PRODUCTS");
         return this;
     }
@@ -45,7 +48,15 @@ public class ProductsListPage extends BasePage {
         click(getAddToCartBtn(productName));
         return this;
     }
-
+    public ProductsListPage clickAddToCartBtn(SaucedemoValObL saucedemoValObL) {
+        click(getAddToCartBtn(saucedemoValObL.getProd1()));
+        click(getAddToCartBtn(saucedemoValObL.getProd2()));
+        click(getAddToCartBtn(saucedemoValObL.getProd3()));
+        click(getAddToCartBtn(saucedemoValObL.getProd4()));
+        click(getAddToCartBtn(saucedemoValObL.getProd5()));
+        click(getAddToCartBtn(saucedemoValObL.getProd6()));
+        return this;
+    }
     public String getProductCost(String productName) {
         return getText(getProductPrice(productName));
     }
