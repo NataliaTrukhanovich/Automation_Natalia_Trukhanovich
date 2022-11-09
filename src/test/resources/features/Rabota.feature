@@ -4,9 +4,10 @@ Feature: Rabota by tests
     Given open home page Rabota by
     When i input search field <searchName>
     Then i check search Name <searchName>
+    And i check results quantity <quantity>
     Examples:
-      | searchName      |
-      | "QA Automation" |
+      | searchName      | quantity |
+      | "QA automation" | 46       |
 
 
 

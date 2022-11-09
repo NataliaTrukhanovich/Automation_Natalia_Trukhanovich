@@ -32,6 +32,9 @@ public abstract class BaseTest {
 
     protected <T> T get(Class<T> page) {
         T instance = null;
+        properties = getProperties();
+        getManager(DriverManagerType
+                .valueOf(properties.containsKey("browser") ? properties.getProperty("browser").toUpperCase() : "CHROME"));
         try {
             instance = page.getDeclaredConstructor().newInstance();
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException |

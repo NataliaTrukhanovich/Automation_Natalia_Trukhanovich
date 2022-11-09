@@ -4,9 +4,10 @@
 
     <listeners>
         <listener class-name="testNGUtils.Listener"/>
+        <listener class-name="testNGUtils.InvokedMethodListener"/>
     </listeners>
 
-    <test name="Rabota by tests">
+    <test name="RabotaBy tests">
         <classes>
             <class name="Lecture18.Homework.RunRabotaByCucumber"/>
         </classes>
