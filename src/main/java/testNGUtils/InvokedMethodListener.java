@@ -7,13 +7,13 @@ import org.testng.IInvokedMethod;
 import org.testng.IInvokedMethodListener;
 import org.testng.ITestResult;
 
-import static Driver.SimpleDriver.getWebDriver;
+import static Driver.DriverManager.getDriver;
 
 public class InvokedMethodListener implements IInvokedMethodListener {
     @Override
     public void afterInvocation(IInvokedMethod method, ITestResult testResult) {
-        if (!testResult.isSuccess() && getWebDriver() != null) {
-            byte[] screenshot = ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.BYTES);
+        if (!testResult.isSuccess() && getDriver() != null) {
+            byte[] screenshot = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
             saveScreenshots(screenshot);
         }
     }

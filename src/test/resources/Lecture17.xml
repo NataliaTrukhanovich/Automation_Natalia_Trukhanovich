@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Lecture17" thread-count="1" parallel="tests">
+
+    <test name="Rw.by Selenide Test">
+        <classes>
+            <class name="Lecture17.RwSelenideTest"></class>
+        </classes>
+    </test>
+</suite>
+
+
+

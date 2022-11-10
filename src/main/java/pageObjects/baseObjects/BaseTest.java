@@ -1,6 +1,6 @@
 package pageObjects.baseObjects;
 
-import Driver.SimpleDriver;
+import io.github.bonigarcia.wdm.config.DriverManagerType;
 import lombok.extern.log4j.Log4j;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -12,7 +12,8 @@ import testNGUtils.Listener;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Properties;
 
-import static Driver.SimpleDriver.closeWebDriver;
+import static Driver.DriverManager.closeDriver;
+import static Driver.DriverManagerFactory.getManager;
 import static propertyHelper.PropertyReader.getProperties;
 
 @Listeners({Listener.class, InvokedMethodListener.class, ExtentReportListener.class})
@@ -24,12 +25,16 @@ public abstract class BaseTest {
     @BeforeTest()
     public void setUpDriver() {
         log.debug("Starting new web driver!");
-        new SimpleDriver();
-        properties=getProperties();
+        properties = getProperties();
+        getManager(DriverManagerType
+                .valueOf(properties.containsKey("browser") ? properties.getProperty("browser").toUpperCase() : "CHROME"));
     }
 
     protected <T> T get(Class<T> page) {
         T instance = null;
+        properties = getProperties();
+        getManager(DriverManagerType
+                .valueOf(properties.containsKey("browser") ? properties.getProperty("browser").toUpperCase() : "CHROME"));
         try {
             instance = page.getDeclaredConstructor().newInstance();
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
@@ -42,6 +47,6 @@ public abstract class BaseTest {
     @AfterTest()
     public void stopDriver() {
         log.debug("Closing web driver!");
-        closeWebDriver();
+        closeDriver();
     }
 }

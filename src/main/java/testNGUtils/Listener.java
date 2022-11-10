@@ -11,8 +11,6 @@ import propertyHelper.PropertyReader;
 public class Listener implements ITestListener {
     @Override
     public void onStart(ITestContext context) {
-
-        log.debug("config value from suite = " + context.getSuite().getParameter("config"));
         String propertyName = (context.getSuite().getParameter("config")) == null ? System.getProperty("config") :
                 context.getSuite().getParameter("config");
         new PropertyReader(propertyName);

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Lecture17Home" thread-count="1" parallel="tests">
+
+    <test name="Moodpanda Selenide Registration Test">
+        <classes>
+            <class name="Lecture17.Homework.MoodpandaSelenideRegistrationTest"></class>
+        </classes>
+    </test>
+    <test name="Moodpanda Selenide Authorization Test">
+        <classes>
+            <class name="Lecture17.Homework.MoodpandaSelenideLoginTest"></class>
+        </classes>
+    </test>
+    <test name="Moodpanda Selenide Navigation Test">
+        <classes>
+            <class name="Lecture17.Homework.MoodpandaSelenideNavigationTest"></class>
+        </classes>
+    </test>
+</suite>
+
+
+

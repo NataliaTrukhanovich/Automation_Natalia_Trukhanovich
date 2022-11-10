@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Lecture18" thread-count="1" parallel="tests">
+
+    <listeners>
+        <listener class-name="testNGUtils.SelenideListener"/>
+    </listeners>
+
+    <test name="Moodpanda tests">
+        <classes>
+            <class name="Lecture18.RunMoodpandaCucumber"/>
+        </classes>
+    </test>
+</suite>
+
+
+
