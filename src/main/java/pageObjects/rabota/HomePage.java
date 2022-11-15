@@ -1,6 +1,7 @@
 package pageObjects.rabota;
 
 import lombok.extern.log4j.Log4j;
+import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import pageObjects.baseObjects.BasePage;
@@ -11,8 +12,8 @@ public class HomePage extends BasePage {
     private final By locationRB = By.xpath("//div[@class='area-switcher-column']//span[@data-qa='area-switcher-title']");
     private final By searchField = By.xpath("//input[@data-qa='search-input']");
     private final By searchButton = By.xpath("//button[@data-qa='search-button']");
-    private final By resultText = By.xpath("//h1[@data-qa='vacancies-catalog-header']");
-   private final By resultQuantity = By.xpath("//span[@data-qa='vacancies-total-found']//span");
+    private final By resultText = By.xpath("//*[@class='bloko-header-section-3']//span[contains(text(),'ваканси')]/..");
+   private final By resultQuantity = By.xpath("//*[@class='bloko-header-section-3']//span[contains(text(),'ваканси')]/..");
 
     public HomePage openHomePage() {
         load();
@@ -40,13 +41,14 @@ public class HomePage extends BasePage {
 
     public void checkSearchName(String searchName) {
         log.debug("Verify searchName");
+        log.debug(findElement(resultText).getText());
         Assert.assertTrue(findElement(resultText).getText().contains(searchName));
     }
 
     public void checkResultsQuantity(int quantity) {
         log.debug("Verify results quantity");
-        System.out.println("Get text :: " + findElement(resultQuantity).getText());
-        String str = findElement(resultQuantity).getText().substring(2,4);
-        Assert.assertTrue(Integer.parseInt(str)>=quantity);
+        String str = findElement(resultQuantity).getText();
+        System.out.println("Get text :: " + str);
+        Assert.assertTrue(Integer.parseInt(StringUtils.substringBetween(str," "," "))>=quantity);
     }
 }

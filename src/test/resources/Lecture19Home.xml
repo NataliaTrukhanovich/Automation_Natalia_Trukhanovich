@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Lecture18Home" thread-count="1" parallel="tests">
+
+    <listeners>
+        <listener class-name="testNGUtils.Listener"/>
+        <listener class-name="testNGUtils.InvokedMethodListener"/>
+    </listeners>
+
+    <test name="RabotaBy tests">
+        <classes>
+            <class name="Lecture18.Homework.RunRabotaByCucumber"/>
+        </classes>
+    </test>
+</suite>
+
+
+
