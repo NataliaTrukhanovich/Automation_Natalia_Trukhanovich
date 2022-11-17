@@ -7,7 +7,7 @@ Feature: Rabota by tests
     And i check results quantity <quantity>
     Examples:
       | searchName      | quantity |
-      | "QA automation" | 46       |
+      | "QA automation" | 44       |
 
 
 
